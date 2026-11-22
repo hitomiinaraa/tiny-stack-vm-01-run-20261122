@@ -51,7 +51,8 @@ if(sp<1)return[y,2];return[y,s[--sp]&255];
 }
 }
 }
+let I=process.env.MAKEFUN_INPUT_DIR||"/input",O=process.env.MAKEFUN_OUTPUT_DIR||"/output";
 for(let n=1;n<41;n++){
-let g="i"+("00"+n).slice(-3),r=V(A("/input/"+g+"/program.bin"),A("/input/"+g+"/input.bin"));
-C("/output/"+g,{recursive:true});B("/output/"+g+"/stdout.bin",Buffer.from(r[0]));B("/output/"+g+"/exit.txt",""+r[1]);
+let g="i"+("00"+n).slice(-3),r=V(A(I+"/"+g+"/program.bin"),A(I+"/"+g+"/input.bin"));
+C(O+"/"+g,{recursive:true});B(O+"/"+g+"/stdout.bin",Buffer.from(r[0]));B(O+"/"+g+"/exit.txt",""+r[1]);
 }
