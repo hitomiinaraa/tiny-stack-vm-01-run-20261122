@@ -2,10 +2,10 @@ import{readFileSync as A,writeFileSync as B,mkdirSync as C}from"node:fs";
 function V(p,q){
 let s=new Int32Array(257),m=new Int32Array(256),d=[],y=[],sp=0,pc=0,n=0,i=0,a,b,v,t;
 for(;;){
-if(n>999999)return[y,10];
+if(n>=1e6)return[y,10];
 if(pc<0||pc>=p.length)return[y,9];
 let k=p[pc],L=k==1?1:k==2?4:k>47&&k<52?2:0,j=pc+1+L;
-if(k>7&&!(k>15&&k<35&&k!=31)&&!(k>47&&k<53)&&k!=64&&k!=65&&!(k>79&&k<84))return[y,5];
+if(k>7&&k<16||k==31||k>34&&k<48||k>52&&k<64||k>65&&k<80||k>83)return[y,5];
 if(j>p.length)return[y,9];
 n++;pc=j;
 if(!k)return[y,0];
@@ -29,7 +29,7 @@ if(sp<2)return[y,2];b=s[--sp];a=s[sp-1];
 if(k>18&&k<23&&!b)return[y,4];
 s[sp-1]=k==16?a+b:k==17?a-b:k==18?Math.imul(a,b):k==19?a/b|0:k==20?a%b:k==21?(a>>>0)/(b>>>0)|0:k==22?(a>>>0)%(b>>>0)|0:k==24?a&b:k==25?a|b:k==26?a^b:k==28?a<<b:k==29?a>>b:k==30?(a>>>b)|0:k==32?a==b?1:0:k==33?a<b?1:0:(a>>>0)<(b>>>0)?1:0;
 }else if(k<51){
-v=p[pc-2]|p[pc-1]<<8;if(v>32767)v-=65536;
+v=(p[pc-2]|p[pc-1]<<8)<<16>>16;
 if(k==48)pc+=v;
 else{if(sp<1)return[y,2];a=s[--sp];if((k==49)===(a==0))pc+=v;}
 }else if(k==51){
