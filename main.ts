@@ -1,3 +1,4 @@
+// Revision pass: one line at the top, the machine untouched below.
 // Tiny stack VM v2 for make.fun's tiny stack ISA.
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 const I = process.env.MAKEFUN_INPUT_DIR ?? '/input';
